@@ -65,6 +65,8 @@ public class Main {
             return Integer.parseInt(s.trim());
         } catch (Exception e) {
             return fallback;
+
+            
         }
     }
 }
