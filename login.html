@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fruitify - Login</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="login-body">
+
+    <div class="login-page">
+        <div class="login-box">
+            <div class="logo">
+                <img src="fruitifylogo2.png" alt="FruitScan Logo" class="login-logo">
+                <h1>Fruitify</h1>
+                <p>Supplier Web Dashboard</p>
+            </div>
+            <form id="loginForm">
+                <div class="input-group">
+                    <span class="input-icon">👤</span>
+                    <input type="text" id="loginUser" placeholder="Username" value="demo" required>
+                </div>
+                <div class="input-group">
+                    <span class="input-icon">🔒</span>
+                    <input type="password" id="loginPass" placeholder="Password" value="demo123" required>
+                </div>
+                <button type="submit" class="btn-login">Login</button>
+            </form>
+            <p class="hint">Demo: username "demo" / password "demo123"</p>
+        </div>
+    </div>
+
+    <script>
+        // Simple login - redirect to dashboard on success
+        document.getElementById('loginForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const user = document.getElementById('loginUser').value.trim();
+            const pass = document.getElementById('loginPass').value.trim();
+
+            if (user === 'demo' && pass === 'demo123') {
+                // Store login state
+                sessionStorage.setItem('fruitify_logged_in', 'true');
+                // Redirect to dashboard
+                window.location.href = 'index.html';
+            } else {
+                const loginBox = document.querySelector('.login-box');
+                loginBox.style.animation = 'shake 0.5s';
+                setTimeout(() => { loginBox.style.animation = ''; }, 500);
+                alert('Invalid credentials. Use demo / demo123');
+            }
+        });
+    </script>
+</body>
+</html>
